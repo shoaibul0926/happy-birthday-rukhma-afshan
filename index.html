@@ -299,30 +299,56 @@
   <p class="subtitle">Pick one to open your surprise</p>
 
   <div class="choices" id="choices">
-    <button class="choice-btn" onclick="showCard('note')">💌 Note</button>
-    <button class="choice-btn" onclick="showCard('shayri')">✨ Shayri</button>
+    <button class="choice-btn" onclick="showCard('rukhma-note')">💌 Rukhma's Note</button>
+    <button class="choice-btn" onclick="showCard('rukhma-shayri')">✨ Rukhma's Shayri</button>
+    <button class="choice-btn" onclick="showCard('afshan-note')">💌 Afshan's Note</button>
+    <button class="choice-btn" onclick="showCard('afshan-shayri')">✨ Afshan's Shayri</button>
   </div>
 
-  <div class="card" id="note-card">
-    <h2>A Note For You</h2>
-    <div class="gift-wrap" id="note-gift" onclick="unwrapGift('note')">
+  <div class="card" id="rukhma-note-card">
+    <h2>A Note For Rukhma</h2>
+    <div class="gift-wrap" id="rukhma-note-gift" onclick="unwrapGift('rukhma-note')">
       <div class="gift-box"><span>🎁</span></div>
       <p class="gift-hint">Tap to unwrap</p>
     </div>
-    <div class="message" id="note-message">
-    <p id="note-text">Your note will appear here soon...</p>
+    <div class="message" id="rukhma-note-message">
+    <p id="rukhma-note-text">Your note will appear here soon...</p>
     </div>
     <button class="back-btn" onclick="hideCards()">← Back</button>
   </div>
 
-  <div class="card" id="shayri-card">
-    <h2>A Shayri For You</h2>
-    <div class="gift-wrap" id="shayri-gift" onclick="unwrapGift('shayri')">
+  <div class="card" id="rukhma-shayri-card">
+    <h2>A Shayri For Rukhma</h2>
+    <div class="gift-wrap" id="rukhma-shayri-gift" onclick="unwrapGift('rukhma-shayri')">
       <div class="gift-box"><span>🎁</span></div>
       <p class="gift-hint">Tap to unwrap</p>
     </div>
-    <div class="message" id="shayri-message">
-    <p id="shayri-text">Your shayri will appear here soon...</p>
+    <div class="message" id="rukhma-shayri-message">
+    <p id="rukhma-shayri-text">Your shayri will appear here soon...</p>
+    </div>
+    <button class="back-btn" onclick="hideCards()">← Back</button>
+  </div>
+
+  <div class="card" id="afshan-note-card">
+    <h2>A Note For Afshan</h2>
+    <div class="gift-wrap" id="afshan-note-gift" onclick="unwrapGift('afshan-note')">
+      <div class="gift-box"><span>🎁</span></div>
+      <p class="gift-hint">Tap to unwrap</p>
+    </div>
+    <div class="message" id="afshan-note-message">
+    <p id="afshan-note-text">Your note will appear here soon...</p>
+    </div>
+    <button class="back-btn" onclick="hideCards()">← Back</button>
+  </div>
+
+  <div class="card" id="afshan-shayri-card">
+    <h2>A Shayri For Afshan</h2>
+    <div class="gift-wrap" id="afshan-shayri-gift" onclick="unwrapGift('afshan-shayri')">
+      <div class="gift-box"><span>🎁</span></div>
+      <p class="gift-hint">Tap to unwrap</p>
+    </div>
+    <div class="message" id="afshan-shayri-message">
+    <p id="afshan-shayri-text">Your shayri will appear here soon...</p>
     </div>
     <button class="back-btn" onclick="hideCards()">← Back</button>
   </div>
@@ -331,9 +357,11 @@
 <footer>Made with love for Rukhma & Afshan's birthday</footer>
 
 <script>
+  var ALL_KEYS = ['rukhma-note', 'rukhma-shayri', 'afshan-note', 'afshan-shayri'];
+
   function showCard(which) {
     document.getElementById('choices').style.display = 'none';
-    ['note', 'shayri'].forEach(function (key) {
+    ALL_KEYS.forEach(function (key) {
       document.getElementById(key + '-card').classList.remove('visible');
       var gift = document.getElementById(key + '-gift');
       gift.style.display = 'flex';
@@ -354,8 +382,9 @@
   }
 
   function hideCards() {
-    document.getElementById('note-card').classList.remove('visible');
-    document.getElementById('shayri-card').classList.remove('visible');
+    ALL_KEYS.forEach(function (key) {
+      document.getElementById(key + '-card').classList.remove('visible');
+    });
     document.getElementById('choices').style.display = 'flex';
   }
 
