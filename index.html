@@ -6,11 +6,11 @@
 <title>Happy Birthday Rukhma & Afshan</title>
 <style>
   :root {
-    --pink: #ff6fa5;
-    --purple: #7b5cff;
-    --gold: #ffd166;
-    --bg-1: #1b1033;
-    --bg-2: #3a1c5c;
+    --coral: #ff7452;
+    --teal: #22d3c5;
+    --gold: #ffcb47;
+    --bg-1: #061522;
+    --bg-2: #0f3d52;
   }
 
   * { box-sizing: border-box; }
@@ -33,29 +33,19 @@
     z-index: 0;
   }
 
-  .balloon {
+  .confetti {
     position: absolute;
-    bottom: -120px;
-    width: 42px;
-    height: 54px;
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    opacity: 0.85;
-    animation: float 14s linear infinite;
-  }
-  .balloon::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 100%;
-    width: 1px;
-    height: 60px;
-    background: rgba(255,255,255,0.4);
+    top: -40px;
+    width: 10px;
+    height: 16px;
+    opacity: 0.9;
+    animation: fall linear infinite;
   }
 
-  @keyframes float {
+  @keyframes fall {
     0%   { transform: translateY(0) translateX(0) rotate(0deg); }
-    50%  { transform: translateY(-55vh) translateX(20px) rotate(5deg); }
-    100% { transform: translateY(-115vh) translateX(-10px) rotate(-5deg); }
+    50%  { transform: translateY(55vh) translateX(25px) rotate(180deg); }
+    100% { transform: translateY(115vh) translateX(-15px) rotate(360deg); }
   }
 
   main {
@@ -73,18 +63,18 @@
   h1 {
     font-size: clamp(1.8rem, 7vw, 3.2rem);
     margin: 0 0 8px;
-    background: linear-gradient(90deg, var(--pink), var(--gold), var(--purple));
+    background: linear-gradient(90deg, var(--coral), var(--gold), var(--teal));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     letter-spacing: 1px;
     opacity: 0;
-    animation: dropIn 0.8s 0.1s cubic-bezier(.34,1.56,.64,1) forwards;
+    animation: popIn 0.7s 0.1s cubic-bezier(.34,1.56,.64,1) forwards;
   }
 
   .subtitle {
     font-size: clamp(1rem, 3vw, 1.25rem);
-    color: #e3d9ff;
+    color: #bfe9e4;
     margin-bottom: 36px;
     opacity: 0;
     animation: fadeUp 0.7s 0.5s ease forwards;
@@ -99,10 +89,10 @@
     animation: fadeUp 0.7s 0.8s ease forwards;
   }
 
-  @keyframes dropIn {
-    0%   { opacity: 0; transform: translateY(-40px) scale(0.8); }
-    60%  { opacity: 1; transform: translateY(6px) scale(1.03); }
-    100% { opacity: 1; transform: translateY(0) scale(1); }
+  @keyframes popIn {
+    0%   { opacity: 0; transform: scale(0.5) rotate(-4deg); }
+    70%  { opacity: 1; transform: scale(1.08) rotate(1deg); }
+    100% { opacity: 1; transform: scale(1) rotate(0deg); }
   }
 
   @keyframes fadeUp {
@@ -112,23 +102,27 @@
 
   .choice-btn {
     font-size: 1.1rem;
-    font-weight: 600;
+    font-weight: 700;
     padding: 16px 34px;
-    border-radius: 999px;
+    border-radius: 14px;
     border: none;
     cursor: pointer;
-    color: #1b1033;
-    background: linear-gradient(135deg, var(--gold), var(--pink));
-    box-shadow: 0 8px 24px rgba(255, 111, 165, 0.35);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    color: #061522;
+    background: var(--gold);
+    box-shadow: 0 6px 0 #c99a23;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
   .choice-btn:nth-child(2) {
-    background: linear-gradient(135deg, #a78bfa, var(--purple));
-    color: #fff;
-    box-shadow: 0 8px 24px rgba(123, 92, 255, 0.35);
+    background: var(--teal);
+    color: #052a27;
+    box-shadow: 0 6px 0 #16968c;
   }
   .choice-btn:hover {
-    transform: translateY(-3px) scale(1.03);
+    transform: translateY(2px);
+    box-shadow: 0 4px 0 #c99a23;
+  }
+  .choice-btn:nth-child(2):hover {
+    box-shadow: 0 4px 0 #16968c;
   }
 
   .card {
@@ -137,10 +131,10 @@
     width: 100%;
     margin-top: 32px;
     padding: 28px 26px;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.07);
     backdrop-filter: blur(6px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 2px dashed rgba(255, 203, 71, 0.5);
     animation: appear 0.4s ease;
   }
   .card.visible { display: block; }
@@ -153,14 +147,14 @@
   .card h2 {
     margin-top: 0;
     font-size: 1.4rem;
-    color: var(--gold);
+    color: var(--coral);
   }
 
   .card p {
     white-space: pre-line;
     line-height: 1.7;
     font-size: 1.05rem;
-    color: #f4f0ff;
+    color: #eafbf8;
   }
 
   .gift-wrap {
@@ -174,35 +168,26 @@
 
   .gift-box {
     position: relative;
-    width: 130px;
-    height: 110px;
+    width: 120px;
+    height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 3rem;
-    border-radius: 14px;
-    background: linear-gradient(135deg, var(--pink), var(--purple));
-    box-shadow: 0 12px 28px rgba(123, 92, 255, 0.4);
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, var(--teal), var(--coral));
+    box-shadow: 0 12px 28px rgba(34, 211, 197, 0.35);
     animation: wiggle 2.2s ease-in-out infinite;
   }
-  .gift-box::before,
-  .gift-box::after {
+  .gift-box::before {
     content: "";
     position: absolute;
+    width: 26px;
+    height: 26px;
     background: var(--gold);
-  }
-  .gift-box::before {
-    width: 100%;
-    height: 18px;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-  }
-  .gift-box::after {
-    width: 18px;
-    height: 100%;
+    border-radius: 50%;
+    top: -10px;
     left: 50%;
-    top: 0;
     transform: translateX(-50%);
   }
   .gift-box span {
@@ -210,23 +195,24 @@
     z-index: 1;
   }
   .gift-box.opening {
-    animation: popOpen 0.55s ease forwards;
+    animation: burstOpen 0.6s ease forwards;
   }
 
   @keyframes wiggle {
     0%, 100% { transform: rotate(-4deg); }
     50% { transform: rotate(4deg); }
   }
-  @keyframes popOpen {
+  @keyframes burstOpen {
     0%   { transform: scale(1) rotate(0deg); opacity: 1; }
-    40%  { transform: scale(1.25) rotate(-10deg); opacity: 1; }
-    100% { transform: scale(0.1) rotate(25deg); opacity: 0; }
+    30%  { transform: scale(1.3) rotate(10deg); opacity: 1; }
+    70%  { transform: scale(0.6) rotate(-18deg); opacity: 0.6; }
+    100% { transform: scale(0) rotate(40deg); opacity: 0; }
   }
 
   .gift-hint {
     font-size: 0.9rem;
-    color: #e3d9ff;
-    opacity: 0.85;
+    color: #bfe9e4;
+    opacity: 0.9;
   }
 
   .message {
@@ -292,14 +278,14 @@
     }
 
     .gift-box {
-      width: 110px;
-      height: 94px;
+      width: 100px;
+      height: 100px;
       font-size: 2.5rem;
     }
 
-    .balloon {
-      width: 32px;
-      height: 42px;
+    .confetti {
+      width: 8px;
+      height: 13px;
     }
   }
 </style>
@@ -309,7 +295,7 @@
 <div class="sky" id="sky"></div>
 
 <main>
-  <h1>Happy Birthday, Rukhma & Afshan! 🎂</h1>
+  <h1>Happy Birthday, Rukhma & Afshan! 🎉</h1>
   <p class="subtitle">Pick one to open your surprise</p>
 
   <div class="choices" id="choices">
@@ -364,7 +350,7 @@
     setTimeout(function () {
       gift.style.display = 'none';
       message.classList.add('visible');
-    }, 550);
+    }, 600);
   }
 
   function hideCards() {
@@ -373,18 +359,18 @@
     document.getElementById('choices').style.display = 'flex';
   }
 
-  (function createBalloons() {
-    const colors = ['#ff6fa5', '#ffd166', '#7b5cff', '#5ad1c9', '#ff9f68'];
+  (function createConfetti() {
+    const colors = ['#ff7452', '#22d3c5', '#ffcb47', '#ffffff', '#ff9f68'];
     const sky = document.getElementById('sky');
-    const count = 10;
+    const count = 30;
     for (let i = 0; i < count; i++) {
-      const b = document.createElement('div');
-      b.className = 'balloon';
-      b.style.left = (Math.random() * 100) + 'vw';
-      b.style.background = colors[i % colors.length];
-      b.style.animationDelay = (Math.random() * 14) + 's';
-      b.style.animationDuration = (10 + Math.random() * 8) + 's';
-      sky.appendChild(b);
+      const c = document.createElement('div');
+      c.className = 'confetti';
+      c.style.left = (Math.random() * 100) + 'vw';
+      c.style.background = colors[i % colors.length];
+      c.style.animationDelay = (Math.random() * 10) + 's';
+      c.style.animationDuration = (8 + Math.random() * 7) + 's';
+      sky.appendChild(c);
     }
   })();
 </script>
